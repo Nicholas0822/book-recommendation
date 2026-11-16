@@ -13,10 +13,10 @@ public class BookController {
     }
 
     @GetMapping("/")
-    public String home() {
+    public BookRecommendation home() {
         return chatClient.prompt()
-                .user("Generate a book recommendation for a book on AI and coding")
+                .user("Generate a book recommendation for a book on AI and coding. Please, limit the summary to 100 words")
                 .call()
-                .content();
+                .entity(BookRecommendation.class);
     }
 }
